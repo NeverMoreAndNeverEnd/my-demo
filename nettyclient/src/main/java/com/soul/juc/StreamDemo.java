@@ -10,6 +10,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 @Data
 @NoArgsConstructor
@@ -38,6 +39,30 @@ public class StreamDemo {
 
         List<User> list = Arrays.asList(u1, u2, u3, u4, u5);
 
+        list.stream().filter(t -> {
+            return t.getId() % 2 == 0;
+        }).filter(t -> {
+            return t.getAge() > 24;
+        }).map(m -> {
+            return m.getUserName().toUpperCase();
+        }).sorted((o1, o2) -> {
+            return o2.compareTo(o1);
+        }).limit(1).forEach(System.out::println);
+
+
+    }
+
+    private static void listToStream() {
+        List<Integer> list2 = Arrays.asList(1, 2, 3);
+        list2 = list2.stream().map(x -> {
+            return x * 2;
+        }).collect(Collectors.toList());
+        for (Integer ele : list2) {
+            System.out.println(ele);
+        }
+    }
+
+    private static void fourFunction() {
         Function<String, Integer> function = s -> {
             return s.length();
         };
@@ -53,11 +78,9 @@ public class StreamDemo {
         };
         consumer.accept("sss00");
 
-        Supplier<String> supplier = ()->{
+        Supplier<String> supplier = () -> {
             return "123";
         };
         System.out.println(supplier.get());
-
-
     }
 }

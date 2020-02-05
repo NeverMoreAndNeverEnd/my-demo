@@ -16,7 +16,7 @@ class MyThread implements Callable<Integer> {
 
 /**
  * java多线程,第三种获得多线程的方式
- *
+ * <p>
  * 1.get方法一般请放在最后一行(会阻塞)
  * 多个线程调用同一个futureTask,只会计算(调用)一次
  */
@@ -25,6 +25,10 @@ public class CallableDemo {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         FutureTask<Integer> futureTask = new FutureTask(new MyThread());
         new Thread(futureTask, "A").start();
+
+        while (!futureTask.isDone()) {
+
+        }
         Integer result = futureTask.get();
         System.out.println(result);
 

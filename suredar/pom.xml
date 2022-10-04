@@ -19,7 +19,7 @@
 		<spring-kafka.version>2.1.1.RELEASE</spring-kafka.version>
 		<elasticsearch.version>5.6.4</elasticsearch.version>
 		<!--<elasticsearch.version>2.4.0</elasticsearch.version>-->
-		<protobuf.version>3.5.1</protobuf.version>
+		<protobuf.version>3.16.3</protobuf.version>
 		<!--<netty.version>4.1.22.Final</netty.version>-->
 	</properties>
 
